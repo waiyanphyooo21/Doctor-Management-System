@@ -63,12 +63,12 @@ public class LoginController {
     private UserDAO userDAO;
 
     @PostMapping("/login")
-    public String login(@RequestParam String username,
+    public String login(@RequestParam String email,
                         @RequestParam String password,
                         HttpSession session,
                         Model model) {
 
-        User user = userDAO.findByUsernameAndPassword(username, password);
+        User user = userDAO.findByUsernameAndPassword(email, password);
 
         if (user != null) {
             session.setAttribute("loggedInUser", user);
@@ -90,7 +90,7 @@ public class LoginController {
         if (loggedInUser == null || !"doctor".equals(loggedInUser.getRole())) {
             return "redirect:/login";
         }
-        model.addAttribute("doctorName", loggedInUser.getUsername());
+        model.addAttribute("doctorName", loggedInUser.getName());
         return "doctor";  // doctor.jsp view
     }
 

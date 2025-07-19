@@ -191,7 +191,7 @@ public class DoctorController {
         if (loggedInUser == null || !"doctor".equals(loggedInUser.getRole())) {
             return "redirect:/login";
         }
-        model.addAttribute("doctorName", loggedInUser.getUsername());
+        model.addAttribute("doctorName", loggedInUser.getEmail());
         // Add any schedule data to the model here if needed
         return "doctorSchedule";  // doctorSchedule.jsp view
     }

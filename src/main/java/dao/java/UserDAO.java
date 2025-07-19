@@ -17,12 +17,13 @@ public class UserDAO {
     private JdbcTemplate jdbcTemplate;
 
     public User findByUsernameAndPassword(String username, String password) {
-        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
         List<User> users = jdbcTemplate.query(sql, new RowMapper<User>() {
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                 User user = new User();
                 user.setId(rs.getInt("id"));
-                user.setUsername(rs.getString("username"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
                 user.setRole(rs.getString("role"));
                 return user;
@@ -31,4 +32,6 @@ public class UserDAO {
 
         return users.isEmpty() ? null : users.get(0);
     }
+
+
 }

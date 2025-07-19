@@ -2,12 +2,22 @@ package bean.java;
 
 public class User {
     private int id;
-    private String username;
+    private String name;
+    private String email;
     private String password;
     private String role;
 
-    // Getters and setters
+    // ✅ Getter
+    public String getName() {
+        return name;
+    }
 
+    // ✅ Setter - fixed
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Other getters and setters
     public int getId() {
         return id;
     }
@@ -16,12 +26,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -40,4 +50,3 @@ public class User {
         this.role = role;
     }
 }
-

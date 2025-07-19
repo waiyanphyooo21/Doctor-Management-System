@@ -21,7 +21,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Welcome, <c:out value="${user.username}"/>!</h1>
+    <h1>Welcome, <c:out value="${user.name}"/>!</h1>
     <p>This is your patient dashboard.</p>
 
 
