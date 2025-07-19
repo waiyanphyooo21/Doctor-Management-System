@@ -1,60 +1,45 @@
 package controller.java;
 
+import bean.java.User;
+import dao.java.UserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.*;
-import java.io.IOException;
-import java.sql.*;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.*;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/login")
-public class LoginController extends HttpServlet {
+@Controller
+public class LoginController {
 
-    private final String DB_URL = "jdbc:mysql://localhost:3306/doc_db";
-    private final String DB_USER = "root";
-    private final String DB_PASS = "your_password_here"; // ← update this
+    @Autowired
+    private UserDAO userDAO;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    @PostMapping("/login")
+    public String login(@RequestParam String username,
+                        @RequestParam String password,
+                        HttpSession session,
+                        Model model) {
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        User user = userDAO.findByUsernameAndPassword(username, password);
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+        if (user != null) {
+            session.setAttribute("loggedInUser", user);
 
-            PreparedStatement stmt = conn.prepareStatement(
-                    "SELECT role FROM users WHERE username=? AND password=?"
-            );
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                String role = rs.getString("role");
-
-                // Set session attributes
-                HttpSession session = request.getSession();
-                session.setAttribute("username", username);
-                session.setAttribute("role", role);
-
-                // Redirect to index.jsp (it will redirect again to correct page)
-                response.sendRedirect("index.jsp");
-
-            } else {
-                request.setAttribute("error", "Invalid username or password");
-                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                rd.forward(request, response);
+            if ("doctor".equals(user.getRole())) {
+                return "redirect:/viewemp";
+            } else if ("patient".equals(user.getRole())) {
+                return "redirect:/patienthome";
             }
-
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("error", "Something went wrong.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+
+        model.addAttribute("error", "Invalid credentials");
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 }
-
