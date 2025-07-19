@@ -143,7 +143,7 @@
 
     <div class="links">
         <a href="${pageContext.request.contextPath}/viewemp">Go Back</a>
-        <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
+        <a href="${pageContext.request.contextPath}/doctorhome">Home</a>
     </div>
 </div>
 

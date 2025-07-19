@@ -146,7 +146,7 @@
 
 <div class="add-link">
     <a href="${pageContext.request.contextPath}/add-doctor">Add New Doctor</a>
-    <a href="${pageContext.request.contextPath}/index.jsp">Home</a>
+    <a href="${pageContext.request.contextPath}/doctorhome">Home</a>
 </div>
 
 <%--<div class="search-container">--%>

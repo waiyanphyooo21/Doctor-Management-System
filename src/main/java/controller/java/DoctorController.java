@@ -6,9 +6,11 @@ import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
+import bean.java.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -182,9 +184,20 @@ public class DoctorController {
         doctorDAO.deleteDoctor(id);
         return "redirect:/viewemp";
     }
-    
-    
-   
+
+    @GetMapping("/doctor-schedule")
+    public String doctorSchedule(HttpSession session, Model model) {
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        if (loggedInUser == null || !"doctor".equals(loggedInUser.getRole())) {
+            return "redirect:/login";
+        }
+        model.addAttribute("doctorName", loggedInUser.getUsername());
+        // Add any schedule data to the model here if needed
+        return "doctorSchedule";  // doctorSchedule.jsp view
+    }
+
+
+
     @Min(value = 0, message = "Salary must be a positive number")
     private double salary;
 
