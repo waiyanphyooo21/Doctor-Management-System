@@ -23,7 +23,7 @@
 <div class="container">
     <h1>Welcome, <c:out value="${user.name}"/>!</h1>
     <p>This is your patient dashboard.</p>
-
+    <a href="${pageContext.request.contextPath}/patientappointments" class="btn btn-primary me-2">View Doctor</a>
 
     <div class="logout">
         <a href="${pageContext.request.contextPath}/logout">Logout</a>

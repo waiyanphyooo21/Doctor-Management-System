@@ -16,9 +16,10 @@ public class UserDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public User findByUsernameAndPassword(String username, String password) {
+    public User findByUsernameAndPassword(String email, String password) {
         String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
         List<User> users = jdbcTemplate.query(sql, new RowMapper<User>() {
+            @Override
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                 User user = new User();
                 user.setId(rs.getInt("id"));
@@ -28,10 +29,24 @@ public class UserDAO {
                 user.setRole(rs.getString("role"));
                 return user;
             }
-        }, username, password);
+        }, email, password);
 
         return users.isEmpty() ? null : users.get(0);
     }
 
-
+    public List<User> getAllDoctors() {
+        String sql = "SELECT * FROM users WHERE role = 'doctor'";
+        return jdbcTemplate.query(sql, new RowMapper<User>() {
+            @Override
+            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setRole(rs.getString("role"));
+                return user;
+            }
+        });
+    }
 }

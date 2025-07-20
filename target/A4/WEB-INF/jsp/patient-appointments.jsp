@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Wai Yan Phyo Oo
-  Date: 7/19/25
-  Time: 8:17 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head><title>My Appointments</title></head>
@@ -25,7 +18,7 @@
         <c:set var="doctorName" value="" />
         <c:forEach var="doc" items="${doctors}">
           <c:if test="${doc.id == appointment.doctorId}">
-            <c:set var="doctorName" value="${doc.username}" />
+            <c:set var="doctorName" value="${doc.name}" />
           </c:if>
         </c:forEach>
           ${doctorName}
@@ -41,4 +34,3 @@
 
 </body>
 </html>
-

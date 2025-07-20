@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
+import bean.java.Appointment;
 import bean.java.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import dao.java.DoctorDAO;
+import dao.java.AppointmentDAO;
 import bean.java.Doctor;
 
 @Controller
@@ -185,16 +187,35 @@ public class DoctorController {
         return "redirect:/viewemp";
     }
 
-    @GetMapping("/doctor-schedule")
+//    @GetMapping("/doctor-schedule")
+//    public String doctorSchedule(HttpSession session, Model model) {
+//        User loggedInUser = (User) session.getAttribute("loggedInUser");
+//        if (loggedInUser == null || !"doctor".equals(loggedInUser.getRole())) {
+//            return "redirect:/login";
+//        }
+//        model.addAttribute("doctorName", loggedInUser.getEmail());
+//        // Add any schedule data to the model here if needed
+//        return "doctorSchedule";  // doctorSchedule.jsp view
+//    }
+@Autowired
+private AppointmentDAO appointmentDAO;  // Inject AppointmentDAO here
+
+    @GetMapping("/doctorSchedule")
     public String doctorSchedule(HttpSession session, Model model) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         if (loggedInUser == null || !"doctor".equals(loggedInUser.getRole())) {
             return "redirect:/login";
         }
-        model.addAttribute("doctorName", loggedInUser.getEmail());
-        // Add any schedule data to the model here if needed
-        return "doctorSchedule";  // doctorSchedule.jsp view
+
+        model.addAttribute("doctorName", loggedInUser.getName());  // use name instead of email
+
+        // Fetch appointments for this doctor
+        List<Appointment> appointments = appointmentDAO.getAppointmentsByDoctorId(loggedInUser.getId());
+        model.addAttribute("appointments", appointments);
+
+        return "doctorSchedule";  // Your JSP page that will display the schedule
     }
+
 
 
 
