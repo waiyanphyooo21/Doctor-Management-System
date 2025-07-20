@@ -188,25 +188,6 @@ public class DoctorController {
         return "redirect:/viewemp";
     }
 
-//@Autowired
-//private AppointmentDAO appointmentDAO;  // Inject AppointmentDAO here
-//
-//    @GetMapping("/doctorSchedule")
-//    public String doctorSchedule(HttpSession session, Model model) {
-//        User loggedInUser = (User) session.getAttribute("loggedInUser");
-//        if (loggedInUser == null || !"doctor".equals(loggedInUser.getRole())) {
-//            return "redirect:/login";
-//        }
-//
-//        model.addAttribute("doctorName", loggedInUser.getName());  // use name instead of email
-//
-//        // Fetch appointments for this doctor
-//        List<Appointment> appointments = appointmentDAO.getAppointmentsByDoctorId(loggedInUser.getId());
-//        model.addAttribute("appointments", appointments);
-//
-//        return "doctorSchedule";  // Your JSP page that will display the schedule
-//    }
-
     @Autowired
     private AppointmentDAO appointmentDAO;
 

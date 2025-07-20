@@ -139,7 +139,7 @@
 
     <div class="links">
         <a href="${pageContext.request.contextPath}/viewemp">View Doctors</a>
-        <a href="${pageContext.request.contextPath}/doctorhome">Home</a>
+        <a href="${pageContext.request.contextPath}/staff">Home</a>
     </div>
 </div>
 
