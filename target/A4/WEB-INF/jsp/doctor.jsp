@@ -18,7 +18,7 @@
   <h2>Welcome, Dr. ${doctorName}</h2>
   <div class="mt-4">
     <a href="${pageContext.request.contextPath}/viewemp" class="btn btn-primary me-2">View Doctor List</a>
-    <a href="${pageContext.request.contextPath}/doctor-schedule" class="btn btn-secondary">View Doctor Schedule</a>
+    <a href="${pageContext.request.contextPath}/doctorSchedule" class="btn btn-secondary">View Doctor Schedule</a>
   </div>
 
   <div class="mt-4">
