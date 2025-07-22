@@ -40,7 +40,6 @@ public class DoctorController {
 
 
 
- // Search doctors by name or ID
  @GetMapping("/search-doctors")
  public String searchDoctors(@RequestParam(required = false) String query, Model model) {
      List<Doctor> doctors;
