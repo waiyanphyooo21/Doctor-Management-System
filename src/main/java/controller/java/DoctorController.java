@@ -38,8 +38,7 @@ public class DoctorController {
     }
     
 
-    
- // Add these methods to your DoctorController
+
 
  // Search doctors by name or ID
  @GetMapping("/search-doctors")
