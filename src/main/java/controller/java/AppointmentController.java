@@ -22,7 +22,6 @@ public class AppointmentController {
     @Autowired
     private UserDAO userDAO;
 
-    // Show appointment form for patient to create appointment
     @GetMapping("/appointment")
     public String showAppointmentForm(HttpSession session, Model model) {
         User user = (User) session.getAttribute("loggedInUser");
@@ -32,7 +31,6 @@ public class AppointmentController {
 
         model.addAttribute("appointment", new Appointment());
 
-        // Load all doctors to show in dropdown
         model.addAttribute("doctors", userDAO.getAllDoctors());
 
         return "appointmentform"; // patient appointment form JSP
