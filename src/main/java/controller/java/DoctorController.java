@@ -45,19 +45,16 @@ public class DoctorController {
      List<Doctor> doctors;
      if (query != null && !query.isEmpty()) {
          try {
-             // Try to parse as ID first
              int id = Integer.parseInt(query);
              Doctor doctor = doctorDAO.getDoctorById(id);
              doctors = doctor != null ? List.of(doctor) : Collections.emptyList();
          } catch (NumberFormatException e) {
-             // If not a number, search by name
              doctors = doctorDAO.searchDoctorsByName(query);
          }
      } else {
          doctors = doctorDAO.getAllDoctors();
      }
-     
-     // Convert images to base64
+
      for (Doctor doctor : doctors) {
          if (doctor.getImage() != null) {
              String base64Image = Base64.getEncoder().encodeToString(doctor.getImage());
@@ -67,10 +64,9 @@ public class DoctorController {
      
      model.addAttribute("doctors", doctors);
      model.addAttribute("searchQuery", query);
-     return "viewemp"; // Reuse the same view but with search functionality
+     return "viewemp";
  }
 
- // View doctor details
  @GetMapping("/doctor-details/{id}")
  public String viewDoctorDetails(@PathVariable("id") int id, Model model) {
      Doctor doctor = doctorDAO.getDoctorById(id);
