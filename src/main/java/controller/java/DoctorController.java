@@ -37,7 +37,7 @@ public class DoctorController {
         return "empform";
     }
     
-    //search doctor
+
     
  // Add these methods to your DoctorController
 
