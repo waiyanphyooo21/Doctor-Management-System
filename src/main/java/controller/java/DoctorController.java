@@ -82,9 +82,7 @@ public class DoctorController {
      model.addAttribute("doctor", doctor);
      return "doctordetails";
  }
-    
 
-    // Save new doctor with validation
     @PostMapping("/save-doctor")
     public String saveDoctor(@Valid @ModelAttribute("doctor") Doctor doctor,
                              BindingResult result,
@@ -108,7 +106,6 @@ public class DoctorController {
         return "redirect:/viewemp";
     }
 
-    // List all doctors
     @GetMapping("/viewemp")
     public String listDoctors(Model model) {
         List<Doctor> doctors = doctorDAO.getAllDoctors();
@@ -124,7 +121,6 @@ public class DoctorController {
         return "viewemp";
     }
 
-    // Show form to edit doctor
     @GetMapping("/edit-doctor/{id}")
     public String showEditDoctorForm(@PathVariable("id") int id, Model model) {
         Doctor doctor = doctorDAO.getDoctorById(id);
