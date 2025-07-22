@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/staff") // prefix all mappings with /staff
+@RequestMapping("/staff")
 public class StaffController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class StaffController {
         }
 
         model.addAttribute("doctors", doctors);
-        return "viewemp"; // Your doctor list JSP page
+        return "viewemp";
     }
 
     @GetMapping("/doctors/add")
