@@ -45,7 +45,7 @@ public class StaffController {
     @GetMapping("/doctors/add")
     public String showAddDoctorForm(Model model) {
         model.addAttribute("doctor", new Doctor());
-        return "empform"; // Doctor add form JSP
+        return "empform";
     }
 
     @PostMapping("/doctors/save")
@@ -84,7 +84,7 @@ public class StaffController {
             model.addAttribute("base64Image", base64Image);
         }
 
-        return "empeditform"; // Doctor edit form JSP
+        return "empeditform";
     }
 
     @PostMapping("/doctors/update")
@@ -137,8 +137,6 @@ public class StaffController {
     }
 
 
-
-    // Search doctors by name or ID
     @GetMapping("/doctors/search")
     public String searchDoctors(@RequestParam(required = false) String query, Model model) {
         List<Doctor> doctors;
