@@ -33,10 +33,9 @@ public class AppointmentController {
 
         model.addAttribute("doctors", userDAO.getAllDoctors());
 
-        return "appointmentform"; // patient appointment form JSP
+        return "appointmentform";
     }
 
-    // Save appointment from patient form
     @PostMapping("/appointment")
     public String saveAppointment(@ModelAttribute Appointment appointment, HttpSession session) {
         User user = (User) session.getAttribute("loggedInUser");
@@ -49,10 +48,9 @@ public class AppointmentController {
 
         appointmentDAO.saveAppointment(appointment);
 
-        return "redirect:/patientappointments"; // redirect to patient's appointments list
+        return "redirect:/patientappointments";
     }
 
-    // List appointments for logged-in patient with doctor name and formatted date
     @GetMapping("/patientappointments")
     public String listPatientAppointments(HttpSession session, Model model) {
         User user = (User) session.getAttribute("loggedInUser");
@@ -66,24 +64,21 @@ public class AppointmentController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
         for (Appointment appt : appointments) {
-            // Find and set doctor name
             for (User doc : doctors) {
                 if (doc.getId() == appt.getDoctorId()) {
                     appt.setDoctorName(doc.getName());
                     break;
                 }
             }
-            // Format appointment date
             if (appt.getAppointmentDate() != null) {
                 appt.setFormattedAppointmentDate(appt.getAppointmentDate().format(formatter));
             }
         }
 
         model.addAttribute("appointments", appointments);
-        return "patientappointments"; // JSP to show patient appointments
+        return "patientappointments";
     }
 
-    // List appointments for logged-in doctor (doctor schedule)
     @GetMapping("/doctor-schedule")
     public String doctorSchedule(HttpSession session, Model model) {
         User user = (User) session.getAttribute("loggedInUser");
@@ -93,6 +88,6 @@ public class AppointmentController {
 
         List<Appointment> appointments = appointmentDAO.getAppointmentsByDoctorId(user.getId());
         model.addAttribute("appointments", appointments);
-        return "doctorschedule"; // JSP to show doctor schedule
+        return "doctorschedule";
     }
 }
