@@ -133,7 +133,7 @@ public class StaffController {
             return "redirect:/login";
         }
         model.addAttribute("staffName", loggedInUser.getName());
-        return "staff";  // your staff.jsp dashboard view
+        return "staff";
     }
 
 
