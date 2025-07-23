@@ -91,12 +91,12 @@ public class LoginController {
                     return "redirect:/staff";  // staff dashboard (create this)
                 default:
                     model.addAttribute("error", "Role not supported");
-                    return "login";
+                    return "redirect:/index.jsp";
             }
         }
 
         model.addAttribute("error", "Invalid credentials");
-        return "login";
+        return "redirect:/index.jsp";
     }
 
     @GetMapping("/doctorhome")
