@@ -96,7 +96,8 @@ public class LoginController {
         }
 
         model.addAttribute("error", "Invalid credentials");
-        return "redirect:/index.jsp";
+        return "forward:/index.jsp";  // use forward to keep model attributes
+
     }
 
     @GetMapping("/doctorhome")
