@@ -117,7 +117,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="mt-4">
         <a href="${pageContext.request.contextPath}/patientappointments" class="btn btn-primary action-btn">
             <i class="fas fa-calendar-plus me-2"></i>Book Appointment
