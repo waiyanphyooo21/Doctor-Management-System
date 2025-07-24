@@ -43,7 +43,6 @@ public class DoctorDAO {
         return jdbcTemplate.queryForObject(sql, new DoctorRowMapper(), id);
     }
 
-    //search doctor
     public List<Doctor> searchDoctorsByName(String name) {
         String sql = "SELECT * FROM doctors WHERE name LIKE ?";
         return jdbcTemplate.query(sql, new DoctorRowMapper(), "%" + name + "%");
