@@ -67,7 +67,7 @@ public class DoctorDAO {
         return jdbcTemplate.update(sql, id);
     }
 
-    // Inner RowMapper class to map result set to Doctor object
+
     private static class DoctorRowMapper implements RowMapper<Doctor> {
         @Override
         public Doctor mapRow(ResultSet rs, int rowNum) throws SQLException {
