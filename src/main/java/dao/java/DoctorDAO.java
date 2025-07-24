@@ -47,7 +47,6 @@ public class DoctorDAO {
         String sql = "SELECT * FROM doctors WHERE name LIKE ?";
         return jdbcTemplate.query(sql, new DoctorRowMapper(), "%" + name + "%");
     }
-    // Update doctor
     public int updateDoctor(Doctor doctor) {
     	String sql = "UPDATE doctors SET name=?, qualification=?, specialist=?, contact=?, gender=?, image=?, email=?, salary=? WHERE id=?";
     	return jdbcTemplate.update(sql,
