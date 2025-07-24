@@ -61,7 +61,7 @@ public class DoctorDAO {
     	    doctor.getId());
     }
 
-    // Delete doctor
+
     public int deleteDoctor(int id) {
         String sql = "DELETE FROM doctors WHERE id = ?";
         return jdbcTemplate.update(sql, id);
