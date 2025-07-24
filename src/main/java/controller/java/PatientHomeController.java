@@ -17,7 +17,7 @@ public String patientHome(HttpSession session, Model model) {
         return "redirect:/login";
     }
     model.addAttribute("user", loggedInUser);
-    return "patienthome";  // patienthome.jsp view
+    return "patienthome";
 }
 
 }
