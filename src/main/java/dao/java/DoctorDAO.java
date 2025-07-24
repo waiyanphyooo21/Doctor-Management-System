@@ -33,7 +33,6 @@ public class DoctorDAO {
     	    doctor.getSalary());
     }
 
-    // Get all doctors
     public List<Doctor> getAllDoctors() {
         String sql = "SELECT * FROM doctors";
         return jdbcTemplate.query(sql, new DoctorRowMapper());
