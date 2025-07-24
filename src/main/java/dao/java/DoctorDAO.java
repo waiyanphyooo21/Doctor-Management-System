@@ -20,7 +20,6 @@ public class DoctorDAO {
     private JdbcTemplate jdbcTemplate;
     
 
-    // Save new doctor
     public int saveDoctor(Doctor doctor) {
     	String sql = "INSERT INTO doctors (name, qualification, specialist, contact, gender, image, email, salary) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     	return jdbcTemplate.update(sql,
