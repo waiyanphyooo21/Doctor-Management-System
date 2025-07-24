@@ -38,7 +38,6 @@ public class DoctorDAO {
         return jdbcTemplate.query(sql, new DoctorRowMapper());
     }
 
-    // Get doctor by ID
     public Doctor getDoctorById(int id) {
         String sql = "SELECT * FROM doctors WHERE id = ?";
         return jdbcTemplate.queryForObject(sql, new DoctorRowMapper(), id);
