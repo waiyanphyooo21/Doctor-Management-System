@@ -41,7 +41,7 @@ public class UserDAO {
         try {
             return jdbcTemplate.queryForObject(sql, new UserRowMapper(), id);
         } catch (EmptyResultDataAccessException e) {
-            return null; // no user found with that ID
+            return null;
         }
     }
 
