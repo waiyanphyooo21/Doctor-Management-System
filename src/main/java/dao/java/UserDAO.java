@@ -17,7 +17,6 @@ public class UserDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    // Login user by email and password
     public User findByUsernameAndPassword(String email, String password) {
         String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
         List<User> users = jdbcTemplate.query(sql, new UserRowMapper(), email, password);
