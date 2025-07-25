@@ -36,7 +36,6 @@ public class UserDAO {
         return jdbcTemplate.query(sql, new UserRowMapper(), role);
     }
 
-    // Get user by ID (needed to get patient names by patientId)
     public User getUserById(int id) {
         String sql = "SELECT * FROM users WHERE id = ?";
         try {
