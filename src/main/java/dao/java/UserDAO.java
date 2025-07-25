@@ -23,7 +23,6 @@ public class UserDAO {
         return users.isEmpty() ? null : users.get(0);
     }
 
-    // Get all doctors only
     public List<User> getAllDoctors() {
         return getUsersByRole("doctor");
     }
