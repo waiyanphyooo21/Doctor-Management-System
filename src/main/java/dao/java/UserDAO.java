@@ -31,7 +31,6 @@ public class UserDAO {
         return getUsersByRole("staff");
     }
 
-    // Generic method to get users by role
     public List<User> getUsersByRole(String role) {
         String sql = "SELECT * FROM users WHERE role = ?";
         return jdbcTemplate.query(sql, new UserRowMapper(), role);
