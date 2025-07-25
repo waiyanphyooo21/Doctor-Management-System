@@ -27,7 +27,6 @@ public class UserDAO {
         return getUsersByRole("doctor");
     }
 
-    // Get all staff only
     public List<User> getAllStaff() {
         return getUsersByRole("staff");
     }
