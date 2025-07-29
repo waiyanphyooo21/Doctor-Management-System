@@ -44,7 +44,7 @@ public class UserDAO {
             return null;
         }
     }
-    wai yan ph
+    wai yan
     private static class UserRowMapper implements RowMapper<User> {
         @Override
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {
