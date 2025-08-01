@@ -71,6 +71,8 @@ public class LoginController {
     @Autowired
     private UserDAO userDAO;
 
+    //new
+
     @PostMapping("/login")
     public String login(@RequestParam String email,
                         @RequestParam String password,
