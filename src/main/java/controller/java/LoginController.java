@@ -72,6 +72,10 @@ public class LoginController {
     private UserDAO userDAO;
 
     //new
+    @GetMapping("/login")
+    public String showLoginForm() {
+        return "staff";  // Replace with your login JSP/view name if different
+    }
 
     @PostMapping("/login")
     public String login(@RequestParam String email,
