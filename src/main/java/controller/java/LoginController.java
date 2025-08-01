@@ -132,6 +132,16 @@ public class LoginController {
 //    }
 
     //new
+    @GetMapping("/staff")
+    public String staffDashboard(HttpSession session, Model model) {
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        if (loggedInUser == null || !"staff".equals(loggedInUser.getRole())) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("staffName", loggedInUser.getName()); // Optional
+        return "staff"; // means staff.jsp under /WEB-INF/views/
+    }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
