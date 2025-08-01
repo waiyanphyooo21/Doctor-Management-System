@@ -126,15 +126,15 @@ public class StaffController {
         return "redirect:/staff/doctors";
     }
 
-    @GetMapping("")
-    public String staffHome(HttpSession session, Model model) {
-        User loggedInUser = (User) session.getAttribute("loggedInUser");
-        if (loggedInUser == null || !"staff".equals(loggedInUser.getRole())) {
-            return "redirect:/login";
-        }
-        model.addAttribute("staffName", loggedInUser.getName());
-        return "staff";
-    }
+//    @GetMapping("")
+//    public String staffHome(HttpSession session, Model model) {
+//        User loggedInUser = (User) session.getAttribute("loggedInUser");
+//        if (loggedInUser == null || !"staff".equals(loggedInUser.getRole())) {
+//            return "redirect:/login";
+//        }
+//        model.addAttribute("staffName", loggedInUser.getName());
+//        return "staff";
+//    }
 
 
     @GetMapping("/doctors/search")
