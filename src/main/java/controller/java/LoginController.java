@@ -131,6 +131,8 @@ public class LoginController {
 //        return "staff";  // staffDashboard.jsp view (create this)
 //    }
 
+    //new
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
