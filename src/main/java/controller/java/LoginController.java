@@ -131,7 +131,6 @@ public class LoginController {
 //        return "staff";  // staffDashboard.jsp view (create this)
 //    }
 
-    //new
 
 
     @GetMapping("/logout")
