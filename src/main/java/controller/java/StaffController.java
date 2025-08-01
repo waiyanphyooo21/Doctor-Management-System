@@ -136,6 +136,11 @@ public class StaffController {
 //        return "staff";
 //    }
 
+    @GetMapping("")
+    public String staffHome(HttpSession session, Model model) {
+        // returns staff.jsp
+        return "staff";
+    }
 
     @GetMapping("/doctors/search")
     public String searchDoctors(@RequestParam(required = false) String query, Model model) {
